@@ -1,122 +1,126 @@
-import {useState} from "react"
-import {useNavigate} from "react-router-dom"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 
-function Register(){
+function Register() {
 
-const [username,setUsername]=useState("")
-const [email,setEmail]=useState("")
-const [password,setPassword]=useState("")
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-const navigate=useNavigate()
+    const navigate = useNavigate()
 
-const registerUser=async()=>{
+    const registerUser = async () => {
 
-try{
+        try {
 
-await api.post(
-"/auth/register",
-{
-username,
-email,
-password
-}
-)
+            await api.post(
+                "/auth/register",
+                {
+                    username,
+                    email,
+                    password
+                }
+            )
 
-navigate("/login")
+            navigate("/login")
 
-}catch(error){
+        } catch (error) {
+            console.log(error.response?.data)
 
-alert("Registration failed")
+            alert(
+                error.response?.data?.message ||
+                error.message ||
+                "Registration failed"
+            )
+        }
 
-}
+    }
 
-}
+    return (
 
-return(
+        <div className="auth-container">
 
-<div className="auth-container">
+            <div className="register-layout">
 
-<div className="register-layout">
+                <div className="register-info">
 
-    <div className="register-info">
+                    <h1>💰 Finance AI</h1>
 
-        <h1>💰 Finance AI</h1>
+                    <h2>Smart Budget Tracker</h2>
 
-        <h2>Smart Budget Tracker</h2>
+                    <p>
 
-        <p>
+                        Track expenses, manage savings,
+                        analyze spending patterns and
+                        get AI-powered financial insights.
 
-            Track expenses, manage savings,
-            analyze spending patterns and
-            get AI-powered financial insights.
+                    </p>
 
-        </p>
+                    <div className="feature-box">
 
-        <div className="feature-box">
+                        <p>📊 Expense Analytics</p>
 
-            <p>📊 Expense Analytics</p>
+                        <p>🤖 AI Predictions</p>
 
-            <p>🤖 AI Predictions</p>
+                        <p>💸 Smart Budget Planning</p>
 
-            <p>💸 Smart Budget Planning</p>
+                        <p>📈 Financial Health Score</p>
 
-            <p>📈 Financial Health Score</p>
+                    </div>
+
+                </div>
+
+                <div className="auth-box">
+
+                    <h1>Create Account</h1>
+
+                    <p className="subtitle">
+                        Start managing your finances today
+                    </p>
+
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <button onClick={registerUser}>
+                        Create Account
+                    </button>
+
+                    <p className="auth-text">
+
+                        Already have an account?
+
+                        <span onClick={() => navigate("/login")}>
+                            Login
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
-
-    <div className="auth-box">
-
-        <h1>Create Account</h1>
-
-        <p className="subtitle">
-            Start managing your finances today
-        </p>
-
-        <input
-            type="text"
-            placeholder="Full Name"
-            value={username}
-            onChange={(e)=>setUsername(e.target.value)}
-        />
-
-        <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-        />
-
-        <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-        />
-
-        <button onClick={registerUser}>
-            Create Account
-        </button>
-
-        <p className="auth-text">
-
-            Already have an account?
-
-            <span onClick={()=>navigate("/login")}>
-                Login
-            </span>
-
-        </p>
-
-    </div>
-
-</div>
-
-</div>
-
-)
+    )
 
 }
 
