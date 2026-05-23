@@ -30,7 +30,12 @@ function Dashboard() {
     const [reply, setReply] = useState("")
     const [search, setSearch] = useState("")
     const [filterType, setFilterType] = useState("")
-    const [budget, setBudget] = useState({})
+    const [setBudget] = useState({
+        salary: 0,
+        needs: 0,
+        wants: 0,
+        savings: 0
+    })
     const [budgets, setBudgets] = useState([])
     const [darkMode, setDarkMode] = useState(false)
     const [title, setTitle] = useState("")
@@ -81,83 +86,83 @@ function Dashboard() {
     const generatePDF = () => {
 
         const pdf = new jsPDF()
-    
+
         // Use normal font
         pdf.setFont("helvetica", "normal")
-    
+
         pdf.setFontSize(20)
         pdf.text(
             "Finance AI Report",
             20,
             20
         )
-    
+
         pdf.setFontSize(12)
-    
+
         // Replace ₹ with Rs
         pdf.text(
             `Income : Rs ${summary.totalIncome || 0}`,
             20,
             40
         )
-    
+
         pdf.text(
             `Expense : Rs ${summary.totalExpense || 0}`,
             20,
             50
         )
-    
+
         pdf.text(
             `Balance : Rs ${summary.balance || 0}`,
             20,
             60
         )
-    
+
         pdf.line(
             20,
             70,
             180,
             70
         )
-    
+
         pdf.setFontSize(14)
-    
+
         pdf.text(
             "Transactions",
             20,
             85
         )
-    
+
         let y = 100
-    
-        transactions.forEach((item,index)=>{
-    
+
+        transactions.forEach((item, index) => {
+
             const row =
-    
-            `${index+1}. ${item.title} | Rs ${item.amount} | ${item.type} | ${item.category}`
-    
+
+                `${index + 1}. ${item.title} | Rs ${item.amount} | ${item.type} | ${item.category}`
+
             pdf.text(
                 row,
                 20,
                 y
             )
-    
+
             y += 12
-    
-            if(y > 270){
-    
+
+            if (y > 270) {
+
                 pdf.addPage()
-    
+
                 y = 20
-    
+
             }
-    
+
         })
-    
+
         pdf.save(
             "FinanceReport.pdf"
         )
-    
+
     }
 
     const fetchAI = useCallback(async () => {
@@ -289,7 +294,7 @@ function Dashboard() {
 
         }
 
-    }, [token])
+    }, [token,setBudget])
 
     const deleteTransaction = async (id) => {
 
@@ -1119,7 +1124,7 @@ function Dashboard() {
                     </ResponsiveContainer>
 
                 </div>
-                <h2 className="section-title" id="analytics"> 
+                <h2 className="section-title" id="analytics">
                     Monthly Analytics
                 </h2>
 
