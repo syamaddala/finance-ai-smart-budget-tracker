@@ -1,0 +1,907 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  }
+  
+  body{
+  background:#f1f5f9;
+  overflow-x:hidden;
+  }
+  
+  /* MAIN LAYOUT */
+  
+  .dashboard{
+  display:flex;
+  min-height:100vh;
+  width:100%;
+  }
+  
+  .content{
+  flex:1;
+  padding:40px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  }
+  
+  /* SIDEBAR */
+  
+  .sidebar{
+  width:260px;
+  background:#020c2c;
+  color:white;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  flex-shrink:0;
+  }
+  
+  .sidebar h1{
+  font-size:48px;
+  line-height:1.2;
+  margin-bottom:50px;
+  word-break:normal;
+  }
+  
+  .sidebar p{
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:10px;
+  font-size:22px;
+  cursor:pointer;
+  transition:.3s;
+  }
+  
+  .sidebar p:hover{
+  background:rgba(255,255,255,.1);
+  transform:translateX(6px);
+  }
+  
+  /* HEADINGS */
+  
+  h1{
+  margin-bottom:15px;
+  }
+  
+  h2{
+  margin-top:50px;
+  margin-bottom:20px;
+  }
+  
+  /* CARDS */
+  
+  .cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  }
+  
+  .card{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  min-width:240px;
+  min-height:170px;
+  
+  box-shadow:
+  0 10px 25px rgba(
+  0,0,0,.08
+  );
+  
+  transition:.3s;
+  overflow:hidden;
+  }
+  
+  .card:hover{
+  transform:
+  translateY(-8px);
+  }
+  
+  .card h2,
+  .card h3,
+  .card p{
+  margin-bottom:15px;
+  }
+  
+  /* SEARCH + AI BOX */
+  
+  .ai-box,
+  .search-box{
+  
+  background:white;
+  
+  padding:30px;
+  
+  border-radius:25px;
+  
+  box-shadow:
+  0 5px 20px rgba(
+  0,0,0,.08
+  );
+  
+  margin-bottom:30px;
+  
+  display:flex;
+  
+  gap:15px;
+  
+  flex-wrap:wrap;
+  
+  align-items:center;
+  }
+  
+  /* INPUTS */
+  
+  input,
+  select{
+  
+  padding:14px;
+  
+  border-radius:15px;
+  
+  border:1px solid #ddd;
+  
+  outline:none;
+  
+  font-size:16px;
+  
+  min-width:200px;
+  
+  flex:1;
+  }
+  
+  /* BUTTON */
+  
+  button{
+  
+  padding:13px 20px;
+  
+  border:none;
+  
+  border-radius:15px;
+  
+  background:#3b82f6;
+  
+  color:white;
+  
+  font-weight:bold;
+  
+  cursor:pointer;
+  
+  transition:.3s;
+  }
+  
+  button:hover{
+  transform:scale(1.05);
+  }
+  
+  /* TRANSACTION */
+  
+  .transaction-card{
+  
+  display:grid;
+  
+  grid-template-columns:
+  2fr
+  1fr
+  1fr
+  1fr
+  1fr
+  auto;
+  
+  gap:20px;
+  
+  align-items:center;
+  
+  padding:25px;
+  
+  margin-top:20px;
+  
+  background:white;
+  
+  border-radius:25px;
+  
+  box-shadow:
+  0 5px 15px rgba(
+  0,0,0,.08
+  );
+  
+  }
+  
+  .income{
+  border-left:6px solid green;
+  }
+  
+  .expense{
+  border-left:6px solid red;
+  }
+  
+  .chart-card{
+    width:100%;
+    min-height:420px;
+    padding:20px;
+    }
+  
+    
+    
+    
+    .section-title{
+    margin-top:50px;
+    margin-bottom:20px;
+    font-size:36px;
+    font-weight:bold;
+    }
+    
+    .dark .recharts-text{
+    fill:white;
+    }
+    
+    .dark .recharts-legend-item-text{
+    color:white !important;
+    }
+  .menu{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+    margin-top:50px;
+    }
+    
+    .menu p{
+    padding:14px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:22px;
+    }
+
+
+  /* FLOAT BUTTON */
+  
+  .floating-btn{
+  
+  position:fixed;
+  
+  bottom:30px;
+  
+  right:30px;
+  
+  width:65px;
+  
+  height:65px;
+  
+  border-radius:50%;
+  
+  font-size:35px;
+  
+  display:flex;
+  
+  align-items:center;
+  
+  justify-content:center;
+  
+  z-index:1000;
+  }
+  
+  /* CHART */
+  
+  .chart-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    background:white;
+    padding:30px;
+    
+    border-radius:25px;
+    
+    min-height:400px;
+    
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.08);
+    
+    margin-top:20px;
+    overflow:hidden;
+    }
+    
+    .dark .chart-container{
+    background:#1e293b;
+    }
+  
+  /* DARK MODE */
+  
+  .dark{
+  
+  background:#020617;
+  color:white;
+  }
+  
+  .dark .content{
+  background:#020617;
+  }
+  
+  .dark .card,
+  .dark .search-box,
+  .dark .ai-box,
+  .dark .transaction-card{
+  
+  background:#1e293b;
+  color:white;
+  }
+  
+  .dark input,
+  .dark select{
+  
+  background:#334155;
+  
+  color:white;
+  
+  border:1px solid #475569;
+  }
+  
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark p,
+  .dark span{
+  
+  color:white;
+  }
+  
+  .dark body{
+  background:#020617;
+  }
+  
+  /* MOBILE */
+  
+  @media(max-width:768px){
+  
+  .dashboard{
+  flex-direction:column;
+  }
+  
+  .sidebar{
+  width:100%;
+  padding:20px;
+  }
+  
+  .sidebar h1{
+  font-size:40px;
+  }
+  
+  .cards{
+  flex-direction:column;
+  }
+  
+  .card{
+  width:100%;
+  }
+  
+  .content{
+  padding:20px;
+  }
+  
+  .transaction-card{
+  
+  grid-template-columns:1fr;
+  
+  text-align:center;
+  }
+  
+  .ai-box,
+  .search-box{
+  flex-direction:column;
+  }
+  
+  input,
+  select,
+  button{
+  width:100%;
+  }
+  
+  }
+  .download-btn{
+    padding:12px 18px;
+    border-radius:12px;
+    }
+    .avatar{
+
+      width:45px;
+      height:45px;
+      
+      border-radius:50%;
+      
+      background:#3b82f6;
+      
+      display:flex;
+      
+      justify-content:center;
+      
+      align-items:center;
+      
+      font-weight:bold;
+      
+      color:white;
+      
+      }
+      .notification{
+        position:relative;
+        font-size:28px;
+        }
+        
+        .notification-badge{
+        position:absolute;
+        top:-10px;
+        right:-10px;
+        
+        width:18px;
+        height:18px;
+        
+        border-radius:50%;
+        
+        background:red;
+        color:white;
+        
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        
+        font-size:12px;
+        }
+        .top-controls{
+          display:flex;
+          align-items:center;
+          gap:20px;
+          flex-wrap:wrap;
+          }
+          .header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:40px;
+            flex-wrap:wrap;
+            gap:20px;
+            }
+
+            .sidebar{
+              width:260px;
+              background:#020b2d;
+              padding:30px 20px;
+              display:flex;
+              flex-direction:column;
+              justify-content:space-between;
+              position:sticky;
+              top:0;
+              height:100vh;
+              }
+              
+              .logo{
+              font-size:42px;
+              font-weight:700;
+              line-height:1.2;
+              margin-bottom:50px;
+              white-space:nowrap;
+              }
+              
+              .menu{
+              display:flex;
+              flex-direction:column;
+              gap:20px;
+              }
+              
+              .menu p{
+              padding:16px;
+              border-radius:14px;
+              font-size:20px;
+              cursor:pointer;
+              transition:.3s;
+              }
+              
+              .menu p:hover{
+              background:#0f1d52;
+              transform:translateX(8px);
+              }
+              
+              .theme-btn{
+              margin-top:auto;
+              }
+              
+              @media(max-width:768px){
+              
+              .sidebar{
+              width:100%;
+              height:auto;
+              position:relative;
+              }
+              
+              .logo{
+              font-size:34px;
+              text-align:center;
+              }
+              
+              .menu{
+              flex-direction:row;
+              overflow-x:auto;
+              gap:10px;
+              }
+              
+              .menu p{
+              min-width:180px;
+              text-align:center;
+              font-size:16px;
+              }
+              }
+
+              .dark .recharts-cartesian-axis-tick-value{
+                fill:white !important;
+                }
+                
+                .dark .recharts-legend-item-text{
+                color:white !important;
+                }
+                
+                .dark .recharts-text{
+                fill:white !important;
+                }
+                
+                .dark .recharts-tooltip-wrapper{
+                color:black !important;
+                }
+                
+                .dark .chart-container{
+                background:#1e293b;
+                }
+                
+                .dark .card{
+                background:#1e293b;
+                color:white;
+                }
+                
+                .dark h1,
+                .dark h2,
+                .dark h3,
+                .dark p{
+                color:white;
+                }
+                .add-transaction{
+
+                  display:flex;
+                  align-items:center;
+                  gap:15px;
+                  flex-wrap:wrap;
+                  
+                  background:#1e293b;
+                  padding:25px;
+                  
+                  border-radius:25px;
+                  
+                  margin-top:20px;
+                  }
+                  
+                  .add-transaction input,
+                  .add-transaction select{
+                  
+                  flex:1;
+                  min-width:200px;
+                  margin:0;
+                  }
+                  
+                  .add-transaction button{
+                  
+                  height:50px;
+                  min-width:100px;
+                  margin:0;
+                  display:flex;
+                  align-items:center;
+                  justify-content:center;
+                  }
+                  
+                  @media(max-width:768px){
+                  
+                  .add-transaction{
+                  
+                  flex-direction:column;
+                  
+                  }
+                  
+                  .add-transaction input,
+                  .add-transaction select,
+                  .add-transaction button{
+                  
+                  width:100%;
+                  }
+                  
+                  }
+                  /* LOGIN PAGE */
+
+.auth-container{
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  background:linear-gradient(
+  135deg,
+  #0f172a,
+  #1e293b,
+  #334155
+  );
+
+}
+
+.auth-box{
+
+  width:420px;
+
+  padding:40px;
+
+  background:white;
+
+  border-radius:25px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:20px;
+
+  box-shadow:
+  0 10px 35px rgba(
+  0,
+  0,
+  0,
+  .25
+  );
+
+}
+
+.auth-box h1{
+
+  text-align:center;
+
+  margin-bottom:10px;
+
+}
+
+.auth-box input{
+
+  width:100%;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  border:1px solid #ddd;
+
+}
+
+.auth-box button{
+
+  width:100%;
+}
+
+.auth-text{
+
+  text-align:center;
+}
+
+.auth-text span{
+
+  color:#3b82f6;
+
+  cursor:pointer;
+
+  font-weight:bold;
+
+  margin-left:5px;
+}
+
+.auth-text span:hover{
+
+  text-decoration:underline;
+
+}
+
+.register-layout{
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:80px;
+  width:100%;
+  padding:40px;
+  
+  }
+  
+  .register-info{
+  
+  color:white;
+  max-width:450px;
+  
+  }
+  
+  .register-info h1{
+  
+  font-size:55px;
+  margin-bottom:15px;
+  
+  }
+  
+  .register-info h2{
+  
+  font-size:35px;
+  margin-bottom:20px;
+  
+  }
+  
+  .register-info p{
+  
+  line-height:1.8;
+  
+  }
+  
+  .feature-box{
+  
+  margin-top:30px;
+  padding:25px;
+  border-radius:20px;
+  
+  background:rgba(
+  255,
+  255,
+  255,
+  0.08
+  );
+  
+  backdrop-filter:blur(10px);
+  
+  }
+  
+  .feature-box p{
+  
+  margin-bottom:12px;
+  
+  }
+  
+  .subtitle{
+  
+  text-align:center;
+  color:gray;
+  margin-bottom:20px;
+  
+  }
+  
+  @media(max-width:900px){
+  
+  .register-layout{
+  
+  flex-direction:column;
+  gap:30px;
+  
+  }
+  
+  .register-info{
+  
+  text-align:center;
+  
+  }
+  
+  .register-info h1{
+  
+  font-size:40px;
+  
+  }
+  
+  }
+  .top-controls{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+    
+    }
+    
+    .notification,
+    .avatar{
+    
+    position:relative;
+    
+    height:70px;
+    width:70px;
+    
+    border-radius:50%;
+    
+    background:#3b82f6;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    font-size:30px;
+    font-weight:bold;
+    
+    color:white;
+    
+    cursor:pointer;
+    
+    }
+    
+    .notification-badge{
+    
+    position:absolute;
+    
+    top:-5px;
+    right:-5px;
+    
+    background:red;
+    
+    height:28px;
+    width:28px;
+    
+    border-radius:50%;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    font-size:14px;
+    
+    }
+    
+    .dropdown{
+    
+    position:absolute;
+    
+    top:80px;
+    right:0;
+    
+    width:250px;
+    
+    padding:15px;
+    
+    background:white;
+    
+    border-radius:15px;
+    
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.2);
+    
+    z-index:999;
+    
+    }
+    
+    .dropdown p{
+    
+    padding:10px;
+    cursor:pointer;
+    border-radius:10px;
+    
+    }
+    
+    .dropdown p:hover{
+    
+    background:#f1f5f9;
+    
+    }
+    
+    .dark .dropdown{
+    
+    background:#1e293b;
+    color:white;
+    
+    }
+    
+    .download-btn{
+    
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    
+    }
