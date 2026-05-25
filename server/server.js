@@ -21,6 +21,12 @@ require("./routes/budgetRoutes")
 
 const app=express()
 
+app.use(cors({
+    origin: "https://finance-ai-smart-budget-tracker-gbc.vercel.app",
+    credentials: true
+  }))
+
+
 // middleware FIRST
 app.use(cors())
 app.use(express.json())
@@ -30,6 +36,7 @@ app.use(
 "/api/auth",
 authRoutes
 )
+
 
 app.use(
 "/api/transactions",
