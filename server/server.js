@@ -28,7 +28,6 @@ app.use(cors({
 
 
 // middleware FIRST
-app.use(cors())
 app.use(express.json())
 
 // routes AFTER middleware
